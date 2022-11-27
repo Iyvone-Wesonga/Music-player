@@ -30,6 +30,9 @@ h1{
     margin-top: -5rem;
 
 }
+.music-container.play{
+    border-radius:0 0 20px 20px;
+}
 .img-container{
     width: 11rem;
     height: 11rem;
@@ -102,8 +105,8 @@ i{
     border-radius: 15px 15px 0 0;
     position: absolute;
     top: 0;
-    left: 30px;
-    width: 85%;
+    left: 0px;
+    width: 100%;
     border: 1px solid white;
     padding: 1rem;
     padding-inline: 2rem;
@@ -119,7 +122,7 @@ i{
     color: maroon;
     font-size: 2rem;
     margin: 0;
-    margin-left: 20%;
+    text-align: center;
 }
 .progress-container{
     background-color: white;

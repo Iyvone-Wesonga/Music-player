@@ -15,7 +15,7 @@ const cover=document.querySelector('#cover')
 const songs=['Bitches Broken Hearts', 'Bored', 'Come out and play', 
 'Everything I wanted', 'Goodbye', 'I Love You', 'Idontwannabeyouanymore',
 'Ilomilo', 'Listen Before I Go','Lovely','No Time To Die','Ocean Eyes',
-'Watch','Wish you were gay','Bellyache']
+'Watch','Wish you were gay','Bellyache ']
 
 //song indices
 let songIndex=Math.floor(Math.random()*14);
@@ -41,6 +41,7 @@ function playSong(){
     playBtn.innerHTML='<i class="fas fa-pause"></i>'
 
 //Audio API
+
     audio.play()
 
 }
@@ -54,21 +55,44 @@ playBtn.addEventListener("click", ()=>{
         playSong()//
     }
 })
-prevBtn.addEventListener("click",(e)=>{
+prevBtn.addEventListener("click",prevSong)
+function prevSong(e){
     e.preventDefault();
-    songIndex--
+        songIndex--
+    if(songIndex<0){
+        songIndex--
+    }else{songIndex+14}
+    
     loadSong(songs[songIndex])
     musicContainer.classList.add('play')
     audio.play()
-})
-nextBtn.addEventListener("click", (e)=>{
+}
+nextBtn.addEventListener("click", nextSong)
+function nextSong(e){
     e.preventDefault()
-    songIndex++
+    if(songIndex<14){
+    songIndex++}
+    else{songIndex-14}
     loadSong(songs[songIndex])
     musicContainer.classList.add('play')
     audio.play()
-})
-function updateProgress(e){
-    console.log(e.srcElemen)
+}
+function updateProgress(e){//src elements together with .currentTime, duration -->provides the specific media qaulity
+  // console.log(e.srcElement.duration)
+   const {duration, currentTime}=e.srcElement;
+   const progressPercent=currentTime/duration*100
+   progress.style.width=`${progressPercent}%`
 }
 audio.addEventListener("timeupdate", updateProgress)
+//adding functionality to the progress bar
+progressContainer.addEventListener("click", setProgress)
+function setProgress(e){//event property offset gives the offest of the mouse between th target node and event
+    const width=this.clientWidth;
+    const clickXoffset=e.offsetX
+    //console.log(clickXoffset)
+    const duration=audio.duration
+    audio.currentTime=clickXoffset/width*duration
+}
+
+//Audio API to call next song when one finishes
+audio.addEventListener("ended",nextSong)
