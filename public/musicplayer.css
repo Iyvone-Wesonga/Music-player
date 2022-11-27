@@ -38,8 +38,8 @@ h1{
 .img-container::after{
     content: '';
     background-color: white;
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
     position:absolute;
     left: 46%;
     bottom: 45%;
@@ -53,12 +53,12 @@ img{
     object-fit:cover;
     bottom: 0;
     top: 0;
-    animation: rotate 15s linear infinite;
+    animation: rotate 25s linear infinite;
     animation-play-state: paused;
 }
-/*.music-container.play .img-container img{
+.music-container.play .img-container img{
     animation-play-state: running;
-}*/
+}
 @keyframes rotate {
     from {transform: rotate(0deg);}
     to {transform: rotate(360deg);}
@@ -76,7 +76,10 @@ img{
     font-size: 2rem;
     border: none;
     color: rgb(143, 82, 92);
-    transition-duration: 0.3s;
+    transition-duration: 0.5s;
+}
+.action-btn:active{
+    border: none;
 }
 i{
     cursor: pointer;
@@ -90,6 +93,9 @@ i{
 }
 .action-btn-big:hover{
     color: rgb(143, 82, 92);   
+}
+.action-btn-big:active{
+    color: rgb(173, 165, 165);
 }
 .music-info{
     background-color:rgba(255, 255, 255, 0.271);
@@ -111,9 +117,9 @@ i{
 }
 .music-info h4{
     color: maroon;
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin: 0;
-    margin-left: 10rem;
+    margin-left: 20%;
 }
 .progress-container{
     background-color: white;
